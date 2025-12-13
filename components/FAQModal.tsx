@@ -9,44 +9,40 @@ interface FAQModalProps {
 
 const FAQ_DATA = [
   {
-    q: "What exactly is NeedlScan?",
-    a: "NeedlScan is an intelligent search and selection service that acts as a filter between you and the wide range of freelance services available online. Instead of having you navigate large generalist marketplaces, NeedlScan analyzes your need and recommends only the most relevant and high-quality options already present on those platforms."
+    q: "What is NeedlScan?",
+    a: "NeedlScan acts as a filter between you and freelance marketplaces. We analyze your need and recommend the best pre-verified options, saving you hours of searching."
   },
   {
     q: "How does it work?",
-    a: "It works in three simple steps:\n1) Describe your project or need on the platform.\n2) The intelligent matching engine scans and analyzes hundreds of existing, pre-selected offers online.\n3) You receive a curated and explained selection of the freelancers or services most suitable for you, based on relevance, quality, and budget."
+    a: "1) Describe your project.\n2) Our engine scans hundreds of offers.\n3) You receive a curated selection of the best matches."
   },
   {
-    q: "Is NeedlScan a new freelance marketplace?",
-    a: "No, the service is not a marketplace. We do not host or manage freelancers directly. The platform is a search and filtering tool that helps you navigate the existing offer, saving you time and confusion."
+    q: "Is it a marketplace?",
+    a: "No. We don't host freelancers. We are a search tool that redirects you to the best existing offers on major platforms."
   },
   {
-    q: "Why should I use NeedlScan instead of searching directly?",
-    a: "Because the platform is designed and built for the purpose of minimizing the time required during this phase. Large portals can be overwhelming, with duplicate, generic, or uncertain quality offers. NeedlScan does the work of filtering, comparison, and final redirection for you, delivering only the most promising choices. All of this is completely free."
+    q: "Why use it?",
+    a: "To save time and avoid bad hires. Large portals are chaotic; we curate the best options for you for free."
   },
   {
-    q: "Is the service really free?",
-    a: "Yes, using NeedlScan is completely free for users looking for a freelancer. When you purchase a suggested service and the order is delivered and approved, we may receive small affiliate commissions. For you, there are no extra costs."
+    q: "Is it free?",
+    a: "Yes, completely free for you. We may earn a small affiliate commission if you purchase a service we recommend."
   },
   {
-    q: "How do you guarantee the quality of the recommendations?",
-    a: "The scanning engine selects and filters offers using over 670 pre-selected and verified freelancers, having taken into consideration factors such as specific relevance, verified reviews, value for money, and seller reliability. The main goal is precision, not quantity."
+    q: "How do you guarantee quality?",
+    a: "We scan over 670 verified freelancers, checking reviews, reliability, and value for money before recommending them."
   },
   {
-    q: "Can I specify a budget?",
-    a: "Absolutely yes. During the phase of describing your need, you can (and it is required to) indicate your budget. The system will take it into account to propose options that align with your resources, helping you avoid wasting time with offers outside your range."
+    q: "Can I set a budget?",
+    a: "Yes. You indicate your budget, and we find the best options that fit within your range."
   },
   {
-    q: "Do you cover all types of freelance services?",
-    a: "The goal has been to cover a wide range of digital and professional services, including 12 macro-categories with well 108 sub-categories, ranging from web design and copywriting to programming, graphics, marketing, AI, music, video, finance, and much more."
+    q: "What services do you cover?",
+    a: "12 macro-categories including Design, Marketing, Tech, AI, Writing, Video, and more."
   },
   {
-    q: "How long does it take to get the results?",
-    a: "The scanning process is fast. In a few minutes, often in about 60 seconds, you will receive your personalized selection. The time you save is what you would normally spend in hours of scrolling, comparisons, and manual evaluations."
-  },
-  {
-    q: "What is the platform's ultimate goal?",
-    a: "The vision for this service is to become the trusted tool for anyone who needs to choose a freelance service in the vast digital world, thus being the reference \"intelligent filter\" that transforms a chaotic and risky process into a simple, safe, and informed choice."
+    q: "How fast is it?",
+    a: "You get results in minutes, often around 60 seconds."
   }
 ];
 
@@ -61,13 +57,13 @@ const FAQItem: React.FC<FAQItemProps> = ({ item, isOpen, toggle }) => {
     <div className="border-b border-white/5 last:border-none">
       <button 
         onClick={toggle}
-        className={`w-full py-5 px-3 flex items-center justify-between text-left transition-colors duration-300 group ${isOpen ? 'text-brand-green' : 'text-gray-200 hover:text-white'}`}
+        className={`w-full py-3 px-1 flex items-center justify-between text-left transition-colors duration-200 ${isOpen ? 'text-brand-green' : 'text-gray-200 hover:text-white'}`}
       >
-        <span className="font-semibold text-base md:text-lg pr-4 leading-tight">{item.q}</span>
-        <div className={`flex-shrink-0 w-8 h-8 rounded-full flex items-center justify-center border border-white/10 transition-all duration-300 ${isOpen ? 'bg-brand-green/10 border-brand-green/50 rotate-180' : 'bg-white/5 group-hover:bg-white/10'}`}>
+        <span className="font-semibold text-xs md:text-sm pr-4 leading-snug">{item.q}</span>
+        <div className={`flex-shrink-0 w-6 h-6 rounded-full flex items-center justify-center border border-white/10 transition-all duration-300 ${isOpen ? 'bg-brand-green/10 border-brand-green/50 rotate-180' : 'bg-white/5'}`}>
            <ChevronDown 
              className={`transition-colors duration-300 ${isOpen ? 'text-brand-green' : 'text-gray-400'}`} 
-             size={18} 
+             size={14} 
            />
         </div>
       </button>
@@ -75,9 +71,9 @@ const FAQItem: React.FC<FAQItemProps> = ({ item, isOpen, toggle }) => {
         className={`grid transition-[grid-template-rows] duration-300 ease-in-out ${isOpen ? 'grid-rows-[1fr]' : 'grid-rows-[0fr]'}`}
       >
         <div className="overflow-hidden">
-          <div className="pb-6 px-3 text-gray-400 leading-relaxed text-sm md:text-base">
+          <div className="pb-3 px-1 text-gray-400 leading-relaxed text-xs">
             {item.a.split('\n').map((line, i) => (
-               <p key={i} className={i > 0 ? 'mt-2 pl-4 border-l-2 border-brand-green/20' : ''}>
+               <p key={i} className={i > 0 ? 'mt-1.5' : ''}>
                  {line}
                </p>
             ))}
@@ -97,7 +93,7 @@ const FAQModal: React.FC<FAQModalProps> = ({ isOpen, onClose, onContactClick }) 
       document.body.style.overflow = 'hidden';
     } else {
       document.body.style.overflow = 'unset';
-      setOpenIndex(null); // Reset state on close
+      setOpenIndex(null);
     }
     return () => {
       document.body.style.overflow = 'unset';
@@ -111,33 +107,35 @@ const FAQModal: React.FC<FAQModalProps> = ({ isOpen, onClose, onContactClick }) 
   if (!isOpen) return null;
 
   return (
-    <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-black/80 backdrop-blur-md animate-in fade-in duration-300">
+    <div className="fixed inset-0 z-[100] flex items-end justify-center md:items-center px-4 pb-6 md:p-4 bg-black/60 backdrop-blur-sm animate-in fade-in duration-200">
+      
+      {/* Floating Card Container */}
       <div 
-        className="relative w-full max-w-3xl bg-[#0a0a0a] border border-gray-800 rounded-2xl shadow-2xl max-h-[90vh] flex flex-col"
+        className="relative w-full max-w-lg bg-[#121212] border border-white/10 rounded-3xl shadow-2xl max-h-[70vh] md:max-h-[85vh] flex flex-col overflow-hidden animate-in slide-in-from-bottom-10 duration-300"
         onClick={(e) => e.stopPropagation()}
       >
+        {/* iOS-style Drag Handle (Visual only) */}
+        <div className="absolute top-3 left-1/2 -translate-x-1/2 w-10 h-1 bg-white/20 rounded-full md:hidden z-20"></div>
+
         {/* Header */}
-        <div className="flex items-center justify-between p-6 md:p-8 border-b border-gray-800 bg-[#0a0a0a] rounded-t-2xl z-10">
-          <div className="flex items-center gap-3">
-            <div className="p-2 bg-brand-green/10 rounded-xl text-brand-green">
-                <HelpCircle size={24} />
+        <div className="flex items-center justify-between pt-8 pb-4 px-6 md:pt-6 md:pb-6 border-b border-white/5 bg-[#121212] z-10 shrink-0">
+          <div className="flex items-center gap-2">
+            <div className="p-1.5 bg-brand-green/10 rounded-lg text-brand-green">
+                <HelpCircle size={16} />
             </div>
-            <div>
-                <h2 className="text-2xl font-bold text-white">Frequently Asked Questions</h2>
-                <p className="text-gray-500 text-sm">Everything you need to know about NeedlScan</p>
-            </div>
+            <h2 className="text-lg font-bold text-white">FAQ</h2>
           </div>
           <button 
             onClick={onClose}
-            className="p-2 text-gray-400 hover:text-white hover:bg-white/10 rounded-full transition-colors"
+            className="p-1.5 text-gray-400 hover:text-white hover:bg-white/10 rounded-full transition-colors bg-white/5"
           >
-            <X size={24} />
+            <X size={18} />
           </button>
         </div>
         
         {/* Content */}
-        <div className="p-4 md:p-8 overflow-y-auto custom-scrollbar">
-          <div className="space-y-1">
+        <div className="p-6 overflow-y-auto custom-scrollbar pb-8">
+          <div className="space-y-0.5">
              {FAQ_DATA.map((item, index) => (
                 <FAQItem 
                    key={index} 
@@ -148,9 +146,9 @@ const FAQModal: React.FC<FAQModalProps> = ({ isOpen, onClose, onContactClick }) 
              ))}
           </div>
 
-          <div className="mt-8 pt-8 border-t border-white/5 text-center">
-            <p className="text-gray-500 text-sm">
-                Still have questions? 
+          <div className="mt-6 pt-6 border-t border-white/5 text-center">
+            <p className="text-gray-500 text-xs">
+                Need more help? 
                 <button 
                   onClick={() => { onClose(); onContactClick(); }}
                   className="text-brand-green hover:underline font-medium ml-1"
