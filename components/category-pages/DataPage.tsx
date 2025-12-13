@@ -141,7 +141,7 @@ const DataPage: React.FC<DataPageProps> = ({ onBack }) => {
           <div className="flex flex-col md:flex-row justify-between items-end mb-16 pb-6 border-b border-white/10">
             <div>
                 <h2 className="text-3xl md:text-4xl font-bold text-white mb-2">Architettura Dati</h2>
-                <p className="text-gray-400 text-sm font-mono"> > Executing query for specialists...</p>
+                <p className="text-gray-400 text-sm font-mono">{'>'} Executing query for specialists...</p>
             </div>
           </div>
 
