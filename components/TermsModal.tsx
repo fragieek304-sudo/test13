@@ -22,11 +22,11 @@ const TermsModal: React.FC<TermsModalProps> = ({ isOpen, onClose }) => {
   if (!isOpen) return null;
 
   return (
-    <div className="fixed inset-0 z-[100] flex items-end justify-center md:items-center px-4 pb-6 md:p-4 bg-black/60 backdrop-blur-sm animate-in fade-in duration-200">
+    <div className="fixed inset-0 z-[100] flex items-end justify-center md:items-center px-5 pb-10 md:p-4 bg-black/60 backdrop-blur-sm animate-in fade-in duration-200">
       
       {/* Floating Card Container */}
       <div 
-        className="relative w-full max-w-lg bg-[#121212] border border-white/10 rounded-3xl shadow-2xl max-h-[70vh] md:max-h-[85vh] flex flex-col overflow-hidden animate-in slide-in-from-bottom-10 duration-300"
+        className="relative w-full max-w-lg bg-[#121212] border border-white/10 rounded-3xl shadow-2xl max-h-[85vh] md:max-h-[85vh] flex flex-col overflow-hidden animate-in slide-in-from-bottom-10 duration-300"
         onClick={(e) => e.stopPropagation()}
       >
         {/* iOS-style Drag Handle (Visual only) */}
