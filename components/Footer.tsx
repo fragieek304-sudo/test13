@@ -14,94 +14,97 @@ const Footer: React.FC = () => {
   const [isSupportOpen, setIsSupportOpen] = useState(false);
 
   const handleLinkClick = (e: React.MouseEvent, label: string) => {
-    if (label === 'FAQ') {
+    if (label === 'FAQ' || label === 'Customer Support') {
         e.preventDefault();
-        setIsFAQOpen(true);
-    } else if (label === 'Customer Support') {
-        e.preventDefault();
-        setIsSupportOpen(true);
+        if (label === 'FAQ') setIsFAQOpen(true);
+        if (label === 'Customer Support') setIsSupportOpen(true);
     }
-    // Add other link handlers here if needed
   };
 
   return (
-    <footer className="bg-brand-dark border-t border-gray-900 px-4 md:px-8 lg:px-16 pt-10 md:pt-16 pb-8">
-      <div className="grid grid-cols-1 md:grid-cols-4 gap-8 md:gap-12 mb-10 md:mb-16">
-        {/* Brand Column */}
-        <div className="col-span-1 md:col-span-1 text-center md:text-left">
-          <div className="flex items-center justify-center md:justify-start gap-3 mb-4 md:mb-6">
-            {/* Logo Component - Increased rounding */}
-            <Logo className="w-8 h-8 rounded-xl" />
-            <span className="text-xl font-bold text-white">NeedlScan</span>
-          </div>
-          <p className="text-gray-400 text-sm leading-relaxed max-w-xs mx-auto md:mx-0">
-            The smart way to cut digital noise and focus on what really matters.
-          </p>
-        </div>
-
-        {/* Links Columns */}
-        <div className="col-span-1 md:col-span-3 grid grid-cols-2 md:grid-cols-3 gap-8">
-          {FOOTER_LINKS.map((section, idx) => (
-            <div key={idx} className="col-span-1">
-              <h4 className="text-white font-bold mb-4 md:mb-6 text-sm md:text-base">{section.title}</h4>
-              <ul className="space-y-3 md:space-y-4">
-                {section.links.map((link, linkIdx) => (
-                  <li key={linkIdx}>
-                    <a 
-                      href={link.href} 
-                      onClick={(e) => handleLinkClick(e, link.label)}
-                      className="text-gray-400 hover:text-brand-green transition-colors text-xs md:text-sm cursor-pointer block"
-                    >
-                      {link.label}
-                    </a>
-                  </li>
-                ))}
-              </ul>
+    <footer className="bg-brand-dark border-t border-gray-900 pt-16 pb-10">
+      <div className="max-w-7xl mx-auto px-6 md:px-8 lg:px-16">
+        
+        {/* Main Layout: Flex container to separate Brand (Left) from Links (Right) */}
+        <div className="flex flex-col md:flex-row justify-between items-center md:items-start gap-10 md:gap-8 mb-12 md:mb-16">
+          
+          {/* Brand Section - Fixed width or max-width for stability */}
+          <div className="flex flex-col items-center md:items-start md:max-w-xs text-center md:text-left">
+            <div className="flex items-center gap-3 mb-4 md:mb-5">
+              <Logo className="w-10 h-10 rounded-xl" />
+              <span className="text-2xl font-bold text-white tracking-tight leading-none pt-1">NeedlScan</span>
             </div>
-          ))}
+            <p className="text-gray-400 text-sm leading-relaxed max-w-xs">
+              The smart way to cut digital noise and focus on what really matters.
+            </p>
+          </div>
+
+          {/* Links Section - Horizontal on mobile (3 columns) instead of vertical stack */}
+          <div className="grid grid-cols-3 gap-4 sm:gap-10 md:gap-16 w-full md:w-auto text-center md:text-left">
+            {FOOTER_LINKS.map((section, idx) => (
+              <div key={idx} className="flex flex-col">
+                <h4 className="text-white font-bold mb-4 md:mb-6 text-xs md:text-sm uppercase tracking-widest">{section.title}</h4>
+                <ul className="space-y-3 md:space-y-4">
+                  {section.links.map((link, linkIdx) => (
+                    <li key={linkIdx}>
+                      <a 
+                        href={link.href} 
+                        onClick={(e) => handleLinkClick(e, link.label)}
+                        className="text-gray-400 hover:text-brand-green transition-colors text-xs md:text-sm font-medium hover:translate-x-1 duration-200 inline-block"
+                      >
+                        {link.label}
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ))}
+          </div>
+
         </div>
+
+        {/* Bottom Bar - Organized and Aligned */}
+        <div className="pt-8 border-t border-gray-800 flex flex-col md:flex-row justify-between items-center gap-6">
+            
+            {/* Copyright & Legal */}
+            <div className="flex flex-col md:flex-row items-center gap-4 md:gap-8 text-xs text-gray-500 font-medium order-2 md:order-1">
+                <p>© 2025 NeedlScan. All rights reserved.</p>
+                <div className="hidden md:block w-1 h-1 bg-gray-700 rounded-full"></div>
+                <div className="flex gap-6">
+                    <button onClick={() => setIsTermsOpen(true)} className="hover:text-brand-green transition-colors underline">Terms & Conditions</button>
+                    <button onClick={() => setIsPrivacyOpen(true)} className="hover:text-brand-green transition-colors underline">Privacy Policy</button>
+                </div>
+            </div>
+
+            {/* Social Icons */}
+            <div className="flex gap-4 text-gray-400 order-1 md:order-2">
+               <div className="p-2.5 rounded-full bg-white/5 hover:bg-white/10 hover:text-white cursor-pointer transition-all hover:scale-110">
+                  <Facebook size={18} />
+               </div>
+               <div className="p-2.5 rounded-full bg-white/5 hover:bg-white/10 hover:text-white cursor-pointer transition-all hover:scale-110">
+                  <Twitter size={18} />
+               </div>
+               <a 
+                 href="https://www.instagram.com/needlscan?igsh=MXI4eGRqbHI3eWY1Ng==" 
+                 target="_blank" 
+                 rel="noopener noreferrer"
+                 className="p-2.5 rounded-full bg-white/5 hover:bg-white/10 hover:text-white cursor-pointer transition-all hover:scale-110"
+               >
+                 <Instagram size={18} />
+               </a>
+               <div className="p-2.5 rounded-full bg-white/5 hover:bg-white/10 hover:text-white cursor-pointer transition-all hover:scale-110">
+                  <Linkedin size={18} />
+               </div>
+            </div>
+
+        </div>
+
       </div>
 
-      {/* Bottom Bar */}
-      <div className="pt-6 md:pt-8 border-t border-gray-900 flex flex-col md:flex-row justify-between items-center gap-6 md:gap-4">
-        <div className="flex gap-6 text-gray-500 order-2 md:order-1">
-           <Facebook size={18} className="hover:text-white cursor-pointer" />
-           <Twitter size={18} className="hover:text-white cursor-pointer" />
-           <a 
-             href="https://www.instagram.com/needlscan?igsh=MXI4eGRqbHI3eWY1Ng==" 
-             target="_blank" 
-             rel="noopener noreferrer"
-             className="hover:text-white cursor-pointer transition-colors"
-           >
-             <Instagram size={18} />
-           </a>
-           <Linkedin size={18} className="hover:text-white cursor-pointer" />
-        </div>
-        <p className="text-gray-600 text-[10px] md:text-xs text-center md:text-right order-1 md:order-2 flex flex-wrap justify-center gap-1">
-          <button 
-            onClick={() => setIsTermsOpen(true)}
-            className="hover:text-brand-green transition-colors underline decoration-gray-700 underline-offset-2 hover:decoration-brand-green"
-          >
-            Terms & Conditions
-          </button>
-          <span> - </span>
-          <button 
-            onClick={() => setIsPrivacyOpen(true)}
-            className="hover:text-brand-green transition-colors underline decoration-gray-700 underline-offset-2 hover:decoration-brand-green"
-          >
-            Privacy Policy
-          </button>
-          <span className="w-full md:w-auto mt-1 md:mt-0"> - © 2025 NeedlScan</span>
-        </p>
-      </div>
-
+      {/* Modals */}
       <PrivacyPolicyModal isOpen={isPrivacyOpen} onClose={() => setIsPrivacyOpen(false)} />
       <TermsModal isOpen={isTermsOpen} onClose={() => setIsTermsOpen(false)} />
-      <FAQModal 
-        isOpen={isFAQOpen} 
-        onClose={() => setIsFAQOpen(false)} 
-        onContactClick={() => setIsSupportOpen(true)}
-      />
+      <FAQModal isOpen={isFAQOpen} onClose={() => setIsFAQOpen(false)} onContactClick={() => setIsSupportOpen(true)} />
       <SupportModal isOpen={isSupportOpen} onClose={() => setIsSupportOpen(false)} />
     </footer>
   );
